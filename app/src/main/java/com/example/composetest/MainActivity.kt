@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -19,6 +20,7 @@ import com.example.composetest.ui.theme.ComposeTestTheme
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingText("Happy Birthday Sam" ,"form text")
+                    GreetingImage("Happy Birthday Sam" ,"form text")
 
                 }
             }
@@ -59,16 +61,26 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
                 .padding(16.dp)
                 .align(alignment = Alignment.End)
         )
+    }
+}
+
+@Composable
+fun GreetingImage(message: String, from : String , modifier: Modifier = Modifier){
+    val image = painterResource(R.drawable.androidparty)
+    Box {
         Image(
             painter = image,
             contentDescription = null
         )
+        GreetingText(message = message, from = from, modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp))
     }
 }
 @Preview(showBackground = false)
 @Composable
 fun GreetingPreview() {
     ComposeTestTheme {
-        GreetingText("Happy Birthday Sam" ,"form text")
+        GreetingImage("Happy Birthday Sam" ,"form text")
     }
 }
