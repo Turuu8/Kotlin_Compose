@@ -42,12 +42,14 @@ class MainActivity : ComponentActivity() {
             ComposeTestTheme {
 //                ContainerText();
 //                RightIcon();
-                FourText();
+//                FourText();
+                ContactAs();
             }
         }
     }
 }
 
+// ----------------------- Text screen -----------------------
 @Composable
 fun GreetingText(text : String , modifier: Modifier) {
     Text(
@@ -79,6 +81,7 @@ fun ContainerText(){
     }
 }
 
+// ----------------------- Accept Icon -----------------------
 @Composable
 fun RightIcon() {
     val image = painterResource(R.drawable.ic_task_completed)
@@ -102,6 +105,7 @@ fun RightIcon() {
     }
 }
 
+// ----------------------- Four Quadrant Text -----------------------
 @Composable
 fun FourText () {
     Box {
@@ -153,11 +157,19 @@ fun Quadrant(title: String , description: String , color: Color , fractionW: Flo
     }
 }
 
+// ----------------------- Contact As -----------------------
 @Composable
 fun Connect (icon: ImageVector, text: String) {
-    Row {
-        Icon(icon, contentDescription = text)
-        Text(text = text)
+    Row (
+        modifier = Modifier
+            .fillMaxWidth(0.5f)
+            .padding(bottom = 5.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ){
+        Icon(icon, contentDescription = text, modifier = Modifier
+            .width(24.dp)
+            .height(24.dp))
+        Text(text = text, modifier = Modifier.padding(start = 15.dp))
     }
 
 }
@@ -173,17 +185,20 @@ fun ContactAs() {
          modifier = Modifier.fillMaxSize()
     ){
         Column (
-//            modifier = Modifier.align(Alignment.),
-            horizontalAlignment = Alignment.End,
+            modifier = Modifier.align(Alignment.BottomCenter),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Column (
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
                 Image(painter = logo, contentDescription = null, modifier = Modifier
-                    .width(60.dp)
-                    .height(60.dp))
-                Text(text = "Hello world")
-                Text(text = "Title")
+                    .width(80.dp)
+                    .height(80.dp))
+                Text(
+                    text = "Hello world",
+                    fontSize = 32.sp,)
+                Text(text = "Title" ,
+                    fontSize = 24.sp)
             }
             Spacer(modifier = Modifier.height(50.dp))
             Column (
@@ -191,8 +206,9 @@ fun ContactAs() {
             ){
                 Connect(phoneIcon , "+971 52 833 3033");
                 Connect(mailIcon , "info@softhub.me");
-                Connect(locationIcon , "Softhub – DAFZA 4EB 733 PO Box: 293948");
+                Connect(locationIcon , "Softhub – DAFZA 459 2423 345e");
             }
+            Spacer(modifier = Modifier.height(30.dp))
         }
     }
 }
