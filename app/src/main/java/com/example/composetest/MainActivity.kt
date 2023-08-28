@@ -193,7 +193,9 @@ fun ContactAs() {
             ){
                 Image(painter = logo, contentDescription = null, modifier = Modifier
                     .width(80.dp)
-                    .height(80.dp))
+                    .height(80.dp),
+//                    contentScale = Content
+                    )
                 Text(
                     text = "Hello world",
                     fontSize = 32.sp,)
@@ -223,4 +225,5 @@ fun GreetingPreview() {
         ContactAs();
     }
 }
+
 
