@@ -221,8 +221,8 @@ fun GreetingPreview() {
     ComposeTestTheme {
 //        ContainerText();
 //        RightIcon();
-//        FourText();
-        ContactAs();
+        FourText();
+//        ContactAs();
     }
 }
 
